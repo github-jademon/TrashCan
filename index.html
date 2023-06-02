@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>서버수행</title>
+  <style>
+    .customoverlay .title {display: block;width: 95%; text-align: center; background-color: #fff; padding: 10px 5px; font-size: 14px; font-weight: bold;}
+    .dotOverlay {position: relative; bottom: 10px; border-radius: 6px; border: 1px solid #ccc; border-bottom: 2px solid #ddd; float: left; font-size: 12px; padding: 5px; background: #fff;}
+    .dotOverlay:nth-of-type(n) {border: 0; box-shadow: 0px 1px 2px #888;}
+    .number {font-weight: bold; color: #ee6152;}
+    .dotOverlay:after {content: ''; position: absolute; margin-left: -6px; left: 50%; bottom: -8px; width: 11px; height: 8px; background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white_small.png')}
+    .distanceInfo {position: relative; top: 5px; left: 5px; list-style: none; margin: 0;}
+    .distanceInfo .label {display: inline-block; width: 50px;}
+    .distanceInfo:after {content: none;}
+    button:hover {cursor: pointer;}</style>
+</head>
+<body>
+  <div style="margin-left: 100px;">
+    <div>
+      <h1 style="margin: 30px 10px 40px;">쓰레기통 위치</h1>
+    </div>
+    <div id="map" style="width: 50%;  height: 80%; position: absolute; border: 1px solid #eee; box-shadow: 7px 7px 30px 8px #ccc;"></div>
+      <div style="position: absolute; left: 58%; border: 1px solid #eee; display: inline-block; width: 35%; box-shadow: 7px 7px 30px 8px #ccc; padding: 10px">
+        <h3 style="margin-bottom: 30px;">가장 가까운 쓰레기통은</h3>
+        <p id="length">지도에 자신의 위치를 클릭하세요</p>
+        <p style="margin-bottom: 50px;" id="walkTime"></p>
+        <a id="link" href="" target=""><button style="background-color: transparent; border: 1px solid #fef01b; padding: 10px;  border-radius: 5px;">카카오맵으로 보기</button></a>
+        <button style="background-color: transparent; border: 1px solid #aaa; padding: 10px; margin-left: 10px; border-radius: 5px;" onclick="getLoc()">내 위치 표시</button>
+      </div>
+    </div>  <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f460ac343becaeb8bd8ded051e1ddca9"></script>
+  <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = { 
+            center: new kakao.maps.LatLng(35.77455185719732, 128.431324015156), // 지도의 중심좌표
+            level: 6 // 지도의 확대 레벨
+        };
+    
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+    var marker0_lat=35.8083645, marker0_lng=128.5084394;
+    var marker0 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker0_lat, marker0_lng),
+        title:"화원읍 비슬로 2705(1번출구) 도로(가로)변",
+    });
+    marker0.setMap(map);
+
+    var infowindow0 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2705(1번출구) 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker0, 'mouseover', function() {
+        infowindow0.open(map, marker0);
+    });
+    kakao.maps.event.addListener(marker0, 'mouseout', function() {
+        infowindow0.close();
+    });
+
+    kakao.maps.event.addListener(marker0, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8083645,128.5084394', '_blank')
+    });
+
+    var marker1_lat=35.8072079, marker1_lng=128.5080746;
+    var marker1 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker1_lat, marker1_lng),
+        title:"화원읍 비슬로 2679 도로(가로)변",
+    });
+    marker1.setMap(map);
+
+    var infowindow1 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2679 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker1, 'mouseover', function() {
+        infowindow1.open(map, marker1);
+    });
+    kakao.maps.event.addListener(marker1, 'mouseout', function() {
+        infowindow1.close();
+    });
+
+    kakao.maps.event.addListener(marker1, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8072079,128.5080746', '_blank')
+    });
+
+    var marker2_lat=35.805185, marker2_lng=128.5021466;
+    var marker2 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker2_lat, marker2_lng),
+        title:"화원읍 비슬로 2674 도로(가로)변",
+    });
+    marker2.setMap(map);
+
+    var infowindow2 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2674 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker2, 'mouseover', function() {
+        infowindow2.open(map, marker2);
+    });
+    kakao.maps.event.addListener(marker2, 'mouseout', function() {
+        infowindow2.close();
+    });
+
+    kakao.maps.event.addListener(marker2, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.805185,128.5021466', '_blank')
+    });
+
+    var marker3_lat=35.8049434, marker3_lng=128.5032316;
+    var marker3 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker3_lat, marker3_lng),
+        title:"화원읍 비슬로 2611 도로(가로)변",
+    });
+    marker3.setMap(map);
+
+    var infowindow3 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2611 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker3, 'mouseover', function() {
+        infowindow3.open(map, marker3);
+    });
+    kakao.maps.event.addListener(marker3, 'mouseout', function() {
+        infowindow3.close();
+    });
+
+    kakao.maps.event.addListener(marker3, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8049434,128.5032316', '_blank')
+    });
+
+    var marker4_lat=35.8003982, marker4_lng=128.4934974;
+    var marker4 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker4_lat, marker4_lng),
+        title:"화원읍 비슬로 2620 도로(가로)변",
+    });
+    marker4.setMap(map);
+
+    var infowindow4 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2620 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker4, 'mouseover', function() {
+        infowindow4.open(map, marker4);
+    });
+    kakao.maps.event.addListener(marker4, 'mouseout', function() {
+        infowindow4.close();
+    });
+
+    kakao.maps.event.addListener(marker4, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8003982,128.4934974', '_blank')
+    });
+
+    var marker5_lat=35.8035534, marker5_lng=128.4993658;
+    var marker5 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker5_lat, marker5_lng),
+        title:"화원읍 비슬로 257 도로(가로)변",
+    });
+    marker5.setMap(map);
+
+    var infowindow5 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 257 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker5, 'mouseover', function() {
+        infowindow5.open(map, marker5);
+    });
+    kakao.maps.event.addListener(marker5, 'mouseout', function() {
+        infowindow5.close();
+    });
+
+    kakao.maps.event.addListener(marker5, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8035534,128.4993658', '_blank')
+    });
+
+    var marker6_lat=35.8013588, marker6_lng=128.4932192;
+    var marker6 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker6_lat, marker6_lng),
+        title:"화원읍 비슬로 2582 도로(가로)변",
+    });
+    marker6.setMap(map);
+
+    var infowindow6 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2582 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker6, 'mouseover', function() {
+        infowindow6.open(map, marker6);
+    });
+    kakao.maps.event.addListener(marker6, 'mouseout', function() {
+        infowindow6.close();
+    });
+
+    kakao.maps.event.addListener(marker6, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8013588,128.4932192', '_blank')
+    });
+
+    var marker7_lat=35.8006112, marker7_lng=128.4935299;
+    var marker7 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker7_lat, marker7_lng),
+        title:"화원읍 비슬로 2519 도로(가로)변",
+    });
+    marker7.setMap(map);
+
+    var infowindow7 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2519 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker7, 'mouseover', function() {
+        infowindow7.open(map, marker7);
+    });
+    kakao.maps.event.addListener(marker7, 'mouseout', function() {
+        infowindow7.close();
+    });
+
+    kakao.maps.event.addListener(marker7, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8006112,128.4935299', '_blank')
+    });
+
+    var marker8_lat=35.8003982, marker8_lng=128.4934974;
+    var marker8 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker8_lat, marker8_lng),
+        title:"화원읍 비슬로 506길 14 도로(가로)변",
+    });
+    marker8.setMap(map);
+
+    var infowindow8 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 506길 14 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker8, 'mouseover', function() {
+        infowindow8.open(map, marker8);
+    });
+    kakao.maps.event.addListener(marker8, 'mouseout', function() {
+        infowindow8.close();
+    });
+
+    kakao.maps.event.addListener(marker8, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8003982,128.4934974', '_blank')
+    });
+
+    var marker9_lat=35.7958008, marker9_lng=128.4853487;
+    var marker9 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker9_lat, marker9_lng),
+        title:"화원읍 비슬로 2490 도로(가로)변",
+    });
+    marker9.setMap(map);
+
+    var infowindow9 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2490 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker9, 'mouseover', function() {
+        infowindow9.open(map, marker9);
+    });
+    kakao.maps.event.addListener(marker9, 'mouseout', function() {
+        infowindow9.close();
+    });
+
+    kakao.maps.event.addListener(marker9, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7958008,128.4853487', '_blank')
+    });
+
+    var marker10_lat=35.8075578, marker10_lng=128.4891137;
+    var marker10 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker10_lat, marker10_lng),
+        title:"화원읍 비슬로 2428 도로(가로)변",
+    });
+    marker10.setMap(map);
+
+    var infowindow10 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2428 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker10, 'mouseover', function() {
+        infowindow10.open(map, marker10);
+    });
+    kakao.maps.event.addListener(marker10, 'mouseout', function() {
+        infowindow10.close();
+    });
+
+    kakao.maps.event.addListener(marker10, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8075578,128.4891137', '_blank')
+    });
+
+    var marker11_lat=35.8075059, marker11_lng=128.4881275;
+    var marker11 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker11_lat, marker11_lng),
+        title:"화원읍 사문진로 359 도로(가로)변",
+    });
+    marker11.setMap(map);
+
+    var infowindow11 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 사문진로 359 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker11, 'mouseover', function() {
+        infowindow11.open(map, marker11);
+    });
+    kakao.maps.event.addListener(marker11, 'mouseout', function() {
+        infowindow11.close();
+    });
+
+    kakao.maps.event.addListener(marker11, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8075059,128.4881275', '_blank')
+    });
+
+    var marker12_lat=35.8081368, marker12_lng=128.4859184;
+    var marker12 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker12_lat, marker12_lng),
+        title:"화원읍 사문진로 354 도로(가로)변",
+    });
+    marker12.setMap(map);
+
+    var infowindow12 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 사문진로 354 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker12, 'mouseover', function() {
+        infowindow12.open(map, marker12);
+    });
+    kakao.maps.event.addListener(marker12, 'mouseout', function() {
+        infowindow12.close();
+    });
+
+    kakao.maps.event.addListener(marker12, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8081368,128.4859184', '_blank')
+    });
+
+    var marker13_lat=35.8129354, marker13_lng=128.4810178;
+    var marker13 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker13_lat, marker13_lng),
+        title:"화원읍 성산리 83 도로(가로)변",
+    });
+    marker13.setMap(map);
+
+    var infowindow13 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 성산리 83 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker13, 'mouseover', function() {
+        infowindow13.open(map, marker13);
+    });
+    kakao.maps.event.addListener(marker13, 'mouseout', function() {
+        infowindow13.close();
+    });
+
+    kakao.maps.event.addListener(marker13, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8129354,128.4810178', '_blank')
+    });
+
+    var marker14_lat=35.8129354, marker14_lng=128.4810178;
+    var marker14 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker14_lat, marker14_lng),
+        title:"화원읍 성산리 310 도로(가로)변",
+    });
+    marker14.setMap(map);
+
+    var infowindow14 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 성산리 310 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker14, 'mouseover', function() {
+        infowindow14.open(map, marker14);
+    });
+    kakao.maps.event.addListener(marker14, 'mouseout', function() {
+        infowindow14.close();
+    });
+
+    kakao.maps.event.addListener(marker14, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8129354,128.4810178', '_blank')
+    });
+
+    var marker15_lat=35.7977458, marker15_lng=128.4928982;
+    var marker15 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker15_lat, marker15_lng),
+        title:"화원읍 성산리 310 도로(가로)변",
+    });
+    marker15.setMap(map);
+
+    var infowindow15 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 성산리 310 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker15, 'mouseover', function() {
+        infowindow15.open(map, marker15);
+    });
+    kakao.maps.event.addListener(marker15, 'mouseout', function() {
+        infowindow15.close();
+    });
+
+    kakao.maps.event.addListener(marker15, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7977458,128.4928982', '_blank')
+    });
+
+    var marker16_lat=35.8003982, marker16_lng=128.4934974;
+    var marker16 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker16_lat, marker16_lng),
+        title:"화원읍 명천로 243 도로(가로)변",
+    });
+    marker16.setMap(map);
+
+    var infowindow16 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로 243 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker16, 'mouseover', function() {
+        infowindow16.open(map, marker16);
+    });
+    kakao.maps.event.addListener(marker16, 'mouseout', function() {
+        infowindow16.close();
+    });
+
+    kakao.maps.event.addListener(marker16, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8003982,128.4934974', '_blank')
+    });
+
+    var marker17_lat=35.7997494, marker17_lng=128.4981648;
+    var marker17 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker17_lat, marker17_lng),
+        title:"화원읍 비슬로 2495 도로(가로)변",
+    });
+    marker17.setMap(map);
+
+    var infowindow17 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2495 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker17, 'mouseover', function() {
+        infowindow17.open(map, marker17);
+    });
+    kakao.maps.event.addListener(marker17, 'mouseout', function() {
+        infowindow17.close();
+    });
+
+    kakao.maps.event.addListener(marker17, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7997494,128.4981648', '_blank')
+    });
+
+    var marker18_lat=35.8023682, marker18_lng=128.5079641;
+    var marker18 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker18_lat, marker18_lng),
+        title:"화원읍 명천로 181 도로(가로)변",
+    });
+    marker18.setMap(map);
+
+    var infowindow18 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로 181 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker18, 'mouseover', function() {
+        infowindow18.open(map, marker18);
+    });
+    kakao.maps.event.addListener(marker18, 'mouseout', function() {
+        infowindow18.close();
+    });
+
+    kakao.maps.event.addListener(marker18, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8023682,128.5079641', '_blank')
+    });
+
+    var marker19_lat=35.8038241, marker19_lng=128.511514;
+    var marker19 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker19_lat, marker19_lng),
+        title:"화원읍 명천로17길 7-9 도로(가로)변",
+    });
+    marker19.setMap(map);
+
+    var infowindow19 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로17길 7-9 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker19, 'mouseover', function() {
+        infowindow19.open(map, marker19);
+    });
+    kakao.maps.event.addListener(marker19, 'mouseout', function() {
+        infowindow19.close();
+    });
+
+    kakao.maps.event.addListener(marker19, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8038241,128.511514', '_blank')
+    });
+
+    var marker20_lat=35.798498, marker20_lng=128.49454;
+    var marker20 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker20_lat, marker20_lng),
+        title:"화원읍 명천로 57 도로(가로)변",
+    });
+    marker20.setMap(map);
+
+    var infowindow20 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로 57 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker20, 'mouseover', function() {
+        infowindow20.open(map, marker20);
+    });
+    kakao.maps.event.addListener(marker20, 'mouseout', function() {
+        infowindow20.close();
+    });
+
+    kakao.maps.event.addListener(marker20, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.798498,128.49454', '_blank')
+    });
+
+    var marker21_lat=35.7982766, marker21_lng=128.4946805;
+    var marker21 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker21_lat, marker21_lng),
+        title:"화원읍 명천로 11 도로(가로)변",
+    });
+    marker21.setMap(map);
+
+    var infowindow21 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로 11 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker21, 'mouseover', function() {
+        infowindow21.open(map, marker21);
+    });
+    kakao.maps.event.addListener(marker21, 'mouseout', function() {
+        infowindow21.close();
+    });
+
+    kakao.maps.event.addListener(marker21, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7982766,128.4946805', '_blank')
+    });
+
+    var marker22_lat=35.7966486, marker22_lng=128.4951417;
+    var marker22 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker22_lat, marker22_lng),
+        title:"화원읍 명천로 231 도로(가로)변",
+    });
+    marker22.setMap(map);
+
+    var infowindow22 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로 231 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker22, 'mouseover', function() {
+        infowindow22.open(map, marker22);
+    });
+    kakao.maps.event.addListener(marker22, 'mouseout', function() {
+        infowindow22.close();
+    });
+
+    kakao.maps.event.addListener(marker22, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7966486,128.4951417', '_blank')
+    });
+
+    var marker23_lat=35.798101, marker23_lng=128.4998716;
+    var marker23 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker23_lat, marker23_lng),
+        title:"화원읍 명곡로 30 도로(가로)변",
+    });
+    marker23.setMap(map);
+
+    var infowindow23 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명곡로 30 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker23, 'mouseover', function() {
+        infowindow23.open(map, marker23);
+    });
+    kakao.maps.event.addListener(marker23, 'mouseout', function() {
+        infowindow23.close();
+    });
+
+    kakao.maps.event.addListener(marker23, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.798101,128.4998716', '_blank')
+    });
+
+    var marker24_lat=35.7987551, marker24_lng=128.5016669;
+    var marker24 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker24_lat, marker24_lng),
+        title:"화원읍 화암로 120 도로(가로)변",
+    });
+    marker24.setMap(map);
+
+    var infowindow24 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 화암로 120 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker24, 'mouseover', function() {
+        infowindow24.open(map, marker24);
+    });
+    kakao.maps.event.addListener(marker24, 'mouseout', function() {
+        infowindow24.close();
+    });
+
+    kakao.maps.event.addListener(marker24, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7987551,128.5016669', '_blank')
+    });
+
+    var marker25_lat=35.798498, marker25_lng=128.49454;
+    var marker25 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker25_lat, marker25_lng),
+        title:"화원읍 화암로 122 도로(가로)변",
+    });
+    marker25.setMap(map);
+
+    var infowindow25 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 화암로 122 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker25, 'mouseover', function() {
+        infowindow25.open(map, marker25);
+    });
+    kakao.maps.event.addListener(marker25, 'mouseout', function() {
+        infowindow25.close();
+    });
+
+    kakao.maps.event.addListener(marker25, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.798498,128.49454', '_blank')
+    });
+
+    var marker26_lat=35.7995858, marker26_lng=128.490148;
+    var marker26 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker26_lat, marker26_lng),
+        title:"화원읍 명천로 11 도로(가로)변",
+    });
+    marker26.setMap(map);
+
+    var infowindow26 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 명천로 11 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker26, 'mouseover', function() {
+        infowindow26.open(map, marker26);
+    });
+    kakao.maps.event.addListener(marker26, 'mouseout', function() {
+        infowindow26.close();
+    });
+
+    kakao.maps.event.addListener(marker26, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7995858,128.490148', '_blank')
+    });
+
+    var marker27_lat=35.7994078, marker27_lng=128.4889232;
+    var marker27 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker27_lat, marker27_lng),
+        title:"화원읍 비슬로 2487 도로(가로)변",
+    });
+    marker27.setMap(map);
+
+    var infowindow27 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2487 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker27, 'mouseover', function() {
+        infowindow27.open(map, marker27);
+    });
+    kakao.maps.event.addListener(marker27, 'mouseout', function() {
+        infowindow27.close();
+    });
+
+    kakao.maps.event.addListener(marker27, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7994078,128.4889232', '_blank')
+    });
+
+    var marker28_lat=35.7975873, marker28_lng=128.4868808;
+    var marker28 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker28_lat, marker28_lng),
+        title:"화원읍 성천로 8 도로(가로)변",
+    });
+    marker28.setMap(map);
+
+    var infowindow28 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 성천로 8 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker28, 'mouseover', function() {
+        infowindow28.open(map, marker28);
+    });
+    kakao.maps.event.addListener(marker28, 'mouseout', function() {
+        infowindow28.close();
+    });
+
+    kakao.maps.event.addListener(marker28, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7975873,128.4868808', '_blank')
+    });
+
+    var marker29_lat=35.7268052, marker29_lng=128.4476753;
+    var marker29 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker29_lat, marker29_lng),
+        title:"화원읍 비슬로 2451 도로(가로)변",
+    });
+    marker29.setMap(map);
+
+    var infowindow29 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">화원읍 비슬로 2451 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker29, 'mouseover', function() {
+        infowindow29.open(map, marker29);
+    });
+    kakao.maps.event.addListener(marker29, 'mouseout', function() {
+        infowindow29.close();
+    });
+
+    kakao.maps.event.addListener(marker29, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7268052,128.4476753', '_blank')
+    });
+
+    var marker30_lat=35.7274653, marker30_lng=128.4468654;
+    var marker30 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker30_lat, marker30_lng),
+        title:"논공읍 논공중앙로 106 도로(가로)변",
+    });
+    marker30.setMap(map);
+
+    var infowindow30 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">논공읍 논공중앙로 106 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker30, 'mouseover', function() {
+        infowindow30.open(map, marker30);
+    });
+    kakao.maps.event.addListener(marker30, 'mouseout', function() {
+        infowindow30.close();
+    });
+
+    kakao.maps.event.addListener(marker30, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7274653,128.4468654', '_blank')
+    });
+
+    var marker31_lat=35.7769221, marker31_lng=128.4332331;
+    var marker31 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker31_lat, marker31_lng),
+        title:"논공읍 용호로 6 도로(가로)변",
+    });
+    marker31.setMap(map);
+
+    var infowindow31 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">논공읍 용호로 6 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker31, 'mouseover', function() {
+        infowindow31.open(map, marker31);
+    });
+    kakao.maps.event.addListener(marker31, 'mouseout', function() {
+        infowindow31.close();
+    });
+
+    kakao.maps.event.addListener(marker31, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7769221,128.4332331', '_blank')
+    });
+
+    var marker32_lat=35.7745414, marker32_lng=128.4313244;
+    var marker32 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker32_lat, marker32_lng),
+        title:"논공읍 봉동길 9-5 도로(가로)변",
+    });
+    marker32.setMap(map);
+
+    var infowindow32 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">논공읍 봉동길 9-5 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker32, 'mouseover', function() {
+        infowindow32.open(map, marker32);
+    });
+    kakao.maps.event.addListener(marker32, 'mouseout', function() {
+        infowindow32.close();
+    });
+
+    kakao.maps.event.addListener(marker32, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7745414,128.4313244', '_blank')
+    });
+
+    var marker33_lat=35.7285455, marker33_lng=128.4445633;
+    var marker33 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker33_lat, marker33_lng),
+        title:"논공읍 달성군청로 33 도로(가로)변",
+    });
+    marker33.setMap(map);
+
+    var infowindow33 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">논공읍 달성군청로 33 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker33, 'mouseover', function() {
+        infowindow33.open(map, marker33);
+    });
+    kakao.maps.event.addListener(marker33, 'mouseout', function() {
+        infowindow33.close();
+    });
+
+    kakao.maps.event.addListener(marker33, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7285455,128.4445633', '_blank')
+    });
+
+    var marker34_lat=35.7742545, marker34_lng=128.4201906;
+    var marker34 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker34_lat, marker34_lng),
+        title:"논공읍 논공로 763 도로(가로)변",
+    });
+    marker34.setMap(map);
+
+    var infowindow34 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">논공읍 논공로 763 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker34, 'mouseover', function() {
+        infowindow34.open(map, marker34);
+    });
+    kakao.maps.event.addListener(marker34, 'mouseout', function() {
+        infowindow34.close();
+    });
+
+    kakao.maps.event.addListener(marker34, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7742545,128.4201906', '_blank')
+    });
+
+    var marker35_lat=35.8500337, marker35_lng=128.4642154;
+    var marker35 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker35_lat, marker35_lng),
+        title:"논공읍 비슬로 1779 도로(가로)변",
+    });
+    marker35.setMap(map);
+
+    var infowindow35 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">논공읍 비슬로 1779 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker35, 'mouseover', function() {
+        infowindow35.open(map, marker35);
+    });
+    kakao.maps.event.addListener(marker35, 'mouseout', function() {
+        infowindow35.close();
+    });
+
+    kakao.maps.event.addListener(marker35, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8500337,128.4642154', '_blank')
+    });
+
+    var marker36_lat=35.8638542, marker36_lng=128.438075;
+    var marker36 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker36_lat, marker36_lng),
+        title:"다사읍 죽곡리 821-1 도로(가로)변",
+    });
+    marker36.setMap(map);
+
+    var infowindow36 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 죽곡리 821-1 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker36, 'mouseover', function() {
+        infowindow36.open(map, marker36);
+    });
+    kakao.maps.event.addListener(marker36, 'mouseout', function() {
+        infowindow36.close();
+    });
+
+    kakao.maps.event.addListener(marker36, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8638542,128.438075', '_blank')
+    });
+
+    var marker37_lat=35.8742522, marker37_lng=128.4970338;
+    var marker37 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker37_lat, marker37_lng),
+        title:"다사읍 문양리 418-3 도로(가로)변",
+    });
+    marker37.setMap(map);
+
+    var infowindow37 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 문양리 418-3 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker37, 'mouseover', function() {
+        infowindow37.open(map, marker37);
+    });
+    kakao.maps.event.addListener(marker37, 'mouseout', function() {
+        infowindow37.close();
+    });
+
+    kakao.maps.event.addListener(marker37, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8742522,128.4970338', '_blank')
+    });
+
+    var marker38_lat=35.8608316, marker38_lng=128.4570707;
+    var marker38 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker38_lat, marker38_lng),
+        title:"다사읍 서재로 119-1 도로(가로)변",
+    });
+    marker38.setMap(map);
+
+    var infowindow38 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 서재로 119-1 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker38, 'mouseover', function() {
+        infowindow38.open(map, marker38);
+    });
+    kakao.maps.event.addListener(marker38, 'mouseout', function() {
+        infowindow38.close();
+    });
+
+    kakao.maps.event.addListener(marker38, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8608316,128.4570707', '_blank')
+    });
+
+    var marker39_lat=35.8616634, marker39_lng=128.4582935;
+    var marker39 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker39_lat, marker39_lng),
+        title:"다사읍 달구벌대로 770 도로(가로)변",
+    });
+    marker39.setMap(map);
+
+    var infowindow39 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 770 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker39, 'mouseover', function() {
+        infowindow39.open(map, marker39);
+    });
+    kakao.maps.event.addListener(marker39, 'mouseout', function() {
+        infowindow39.close();
+    });
+
+    kakao.maps.event.addListener(marker39, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8616634,128.4582935', '_blank')
+    });
+
+    var marker40_lat=35.8609717, marker40_lng=128.4609679;
+    var marker40 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker40_lat, marker40_lng),
+        title:"다사읍 달구벌대로 790 도로(가로)변",
+    });
+    marker40.setMap(map);
+
+    var infowindow40 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 790 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker40, 'mouseover', function() {
+        infowindow40.open(map, marker40);
+    });
+    kakao.maps.event.addListener(marker40, 'mouseout', function() {
+        infowindow40.close();
+    });
+
+    kakao.maps.event.addListener(marker40, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8609717,128.4609679', '_blank')
+    });
+
+    var marker41_lat=35.8593354, marker41_lng=128.4615419;
+    var marker41 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker41_lat, marker41_lng),
+        title:"다사읍 달구벌대로 812 도로(가로)변",
+    });
+    marker41.setMap(map);
+
+    var infowindow41 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 812 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker41, 'mouseover', function() {
+        infowindow41.open(map, marker41);
+    });
+    kakao.maps.event.addListener(marker41, 'mouseout', function() {
+        infowindow41.close();
+    });
+
+    kakao.maps.event.addListener(marker41, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8593354,128.4615419', '_blank')
+    });
+
+    var marker42_lat=35.8627215, marker42_lng=128.4594932;
+    var marker42 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker42_lat, marker42_lng),
+        title:"다사읍 달구벌대로 842-7 도로(가로)변",
+    });
+    marker42.setMap(map);
+
+    var infowindow42 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 842-7 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker42, 'mouseover', function() {
+        infowindow42.open(map, marker42);
+    });
+    kakao.maps.event.addListener(marker42, 'mouseout', function() {
+        infowindow42.close();
+    });
+
+    kakao.maps.event.addListener(marker42, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8627215,128.4594932', '_blank')
+    });
+
+    var marker43_lat=35.8620971, marker43_lng=128.4627061;
+    var marker43 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker43_lat, marker43_lng),
+        title:"다사읍 달구벌대로 805 도로(가로)변",
+    });
+    marker43.setMap(map);
+
+    var infowindow43 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 805 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker43, 'mouseover', function() {
+        infowindow43.open(map, marker43);
+    });
+    kakao.maps.event.addListener(marker43, 'mouseout', function() {
+        infowindow43.close();
+    });
+
+    kakao.maps.event.addListener(marker43, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8620971,128.4627061', '_blank')
+    });
+
+    var marker44_lat=35.8691581, marker44_lng=128.4957009;
+    var marker44 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker44_lat, marker44_lng),
+        title:"다사읍 달구벌대로 839 도로(가로)변",
+    });
+    marker44.setMap(map);
+
+    var infowindow44 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 839 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker44, 'mouseover', function() {
+        infowindow44.open(map, marker44);
+    });
+    kakao.maps.event.addListener(marker44, 'mouseout', function() {
+        infowindow44.close();
+    });
+
+    kakao.maps.event.addListener(marker44, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8691581,128.4957009', '_blank')
+    });
+
+    var marker45_lat=35.8616634, marker45_lng=128.4582935;
+    var marker45 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker45_lat, marker45_lng),
+        title:"다사읍 서재로 59 도로(가로)변",
+    });
+    marker45.setMap(map);
+
+    var infowindow45 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 서재로 59 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker45, 'mouseover', function() {
+        infowindow45.open(map, marker45);
+    });
+    kakao.maps.event.addListener(marker45, 'mouseout', function() {
+        infowindow45.close();
+    });
+
+    kakao.maps.event.addListener(marker45, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8616634,128.4582935', '_blank')
+    });
+
+    var marker46_lat=35.8593802, marker46_lng=128.4466289;
+    var marker46 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker46_lat, marker46_lng),
+        title:"다사읍 달구벌대로 790 도로(가로)변",
+    });
+    marker46.setMap(map);
+
+    var infowindow46 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 790 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker46, 'mouseover', function() {
+        infowindow46.open(map, marker46);
+    });
+    kakao.maps.event.addListener(marker46, 'mouseout', function() {
+        infowindow46.close();
+    });
+
+    kakao.maps.event.addListener(marker46, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8593802,128.4466289', '_blank')
+    });
+
+    var marker47_lat=35.8570033, marker47_lng=128.46702;
+    var marker47 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker47_lat, marker47_lng),
+        title:"다사읍 달구벌대로 874 도로(가로)변",
+    });
+    marker47.setMap(map);
+
+    var infowindow47 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 874 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker47, 'mouseover', function() {
+        infowindow47.open(map, marker47);
+    });
+    kakao.maps.event.addListener(marker47, 'mouseout', function() {
+        infowindow47.close();
+    });
+
+    kakao.maps.event.addListener(marker47, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8570033,128.46702', '_blank')
+    });
+
+    var marker48_lat=35.875809, marker48_lng=128.4758575;
+    var marker48 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker48_lat, marker48_lng),
+        title:"다사읍 달구벌대로 895 도로(가로)변",
+    });
+    marker48.setMap(map);
+
+    var infowindow48 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 895 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker48, 'mouseover', function() {
+        infowindow48.open(map, marker48);
+    });
+    kakao.maps.event.addListener(marker48, 'mouseout', function() {
+        infowindow48.close();
+    });
+
+    kakao.maps.event.addListener(marker48, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.875809,128.4758575', '_blank')
+    });
+
+    var marker49_lat=35.8593802, marker49_lng=128.4466289;
+    var marker49 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker49_lat, marker49_lng),
+        title:"다사읍 다사로 59-5 도로(가로)변",
+    });
+    marker49.setMap(map);
+
+    var infowindow49 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 다사로 59-5 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker49, 'mouseover', function() {
+        infowindow49.open(map, marker49);
+    });
+    kakao.maps.event.addListener(marker49, 'mouseout', function() {
+        infowindow49.close();
+    });
+
+    kakao.maps.event.addListener(marker49, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8593802,128.4466289', '_blank')
+    });
+
+    var marker50_lat=35.868221, marker50_lng=128.4934516;
+    var marker50 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker50_lat, marker50_lng),
+        title:"다사읍 달구벌대로 874 도로(가로)변",
+    });
+    marker50.setMap(map);
+
+    var infowindow50 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 달구벌대로 874 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker50, 'mouseover', function() {
+        infowindow50.open(map, marker50);
+    });
+    kakao.maps.event.addListener(marker50, 'mouseout', function() {
+        infowindow50.close();
+    });
+
+    kakao.maps.event.addListener(marker50, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.868221,128.4934516', '_blank')
+    });
+
+    var marker51_lat=35.8765435, marker51_lng=128.4963682;
+    var marker51 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker51_lat, marker51_lng),
+        title:"다사읍 서재로 35 도로(가로)변",
+    });
+    marker51.setMap(map);
+
+    var infowindow51 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 서재로 35 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker51, 'mouseover', function() {
+        infowindow51.open(map, marker51);
+    });
+    kakao.maps.event.addListener(marker51, 'mouseout', function() {
+        infowindow51.close();
+    });
+
+    kakao.maps.event.addListener(marker51, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8765435,128.4963682', '_blank')
+    });
+
+    var marker52_lat=35.8745546, marker52_lng=128.4814425;
+    var marker52 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker52_lat, marker52_lng),
+        title:"다사읍 서재로 145 도로(가로)변",
+    });
+    marker52.setMap(map);
+
+    var infowindow52 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 서재로 145 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker52, 'mouseover', function() {
+        infowindow52.open(map, marker52);
+    });
+    kakao.maps.event.addListener(marker52, 'mouseout', function() {
+        infowindow52.close();
+    });
+
+    kakao.maps.event.addListener(marker52, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8745546,128.4814425', '_blank')
+    });
+
+    var marker53_lat=35.6774198, marker53_lng=128.4554311;
+    var marker53 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker53_lat, marker53_lng),
+        title:"다사읍 세천로 182-9 도로(가로)변",
+    });
+    marker53.setMap(map);
+
+    var infowindow53 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">다사읍 세천로 182-9 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker53, 'mouseover', function() {
+        infowindow53.open(map, marker53);
+    });
+    kakao.maps.event.addListener(marker53, 'mouseout', function() {
+        infowindow53.close();
+    });
+
+    kakao.maps.event.addListener(marker53, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6774198,128.4554311', '_blank')
+    });
+
+    var marker54_lat=35.6973058, marker54_lng=128.4476215;
+    var marker54 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker54_lat, marker54_lng),
+        title:"유가읍 테크노대로5길 57 도로(가로)변",
+    });
+    marker54.setMap(map);
+
+    var infowindow54 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">유가읍 테크노대로5길 57 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker54, 'mouseover', function() {
+        infowindow54.open(map, marker54);
+    });
+    kakao.maps.event.addListener(marker54, 'mouseout', function() {
+        infowindow54.close();
+    });
+
+    kakao.maps.event.addListener(marker54, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6973058,128.4476215', '_blank')
+    });
+
+    var marker55_lat=35.6973058, marker55_lng=128.4476215;
+    var marker55 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker55_lat, marker55_lng),
+        title:"현풍읍 테크노상업로 20 도로(가로)변",
+    });
+    marker55.setMap(map);
+
+    var infowindow55 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">현풍읍 테크노상업로 20 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker55, 'mouseover', function() {
+        infowindow55.open(map, marker55);
+    });
+    kakao.maps.event.addListener(marker55, 'mouseout', function() {
+        infowindow55.close();
+    });
+
+    kakao.maps.event.addListener(marker55, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6973058,128.4476215', '_blank')
+    });
+
+    var marker56_lat=35.8042997, marker56_lng=128.6233124;
+    var marker56 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker56_lat, marker56_lng),
+        title:"현풍읍 테크노상업로 50 도로(가로)변",
+    });
+    marker56.setMap(map);
+
+    var infowindow56 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">현풍읍 테크노상업로 50 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker56, 'mouseover', function() {
+        infowindow56.open(map, marker56);
+    });
+    kakao.maps.event.addListener(marker56, 'mouseout', function() {
+        infowindow56.close();
+    });
+
+    kakao.maps.event.addListener(marker56, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8042997,128.6233124', '_blank')
+    });
+
+    var marker57_lat=35.8046237, marker57_lng=128.6225315;
+    var marker57 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker57_lat, marker57_lng),
+        title:"가창면 가창로 1124 도로(가로)변",
+    });
+    marker57.setMap(map);
+
+    var infowindow57 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로 1124 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker57, 'mouseover', function() {
+        infowindow57.open(map, marker57);
+    });
+    kakao.maps.event.addListener(marker57, 'mouseout', function() {
+        infowindow57.close();
+    });
+
+    kakao.maps.event.addListener(marker57, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8046237,128.6225315', '_blank')
+    });
+
+    var marker58_lat=35.8025854, marker58_lng=128.622956;
+    var marker58 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker58_lat, marker58_lng),
+        title:"가창면 가창로 1121 도로(가로)변",
+    });
+    marker58.setMap(map);
+
+    var infowindow58 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로 1121 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker58, 'mouseover', function() {
+        infowindow58.open(map, marker58);
+    });
+    kakao.maps.event.addListener(marker58, 'mouseout', function() {
+        infowindow58.close();
+    });
+
+    kakao.maps.event.addListener(marker58, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8025854,128.622956', '_blank')
+    });
+
+    var marker59_lat=35.7896875, marker59_lng=128.6345625;
+    var marker59 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker59_lat, marker59_lng),
+        title:"가창면 가창로 1100 도로(가로)변",
+    });
+    marker59.setMap(map);
+
+    var infowindow59 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로 1100 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker59, 'mouseover', function() {
+        infowindow59.open(map, marker59);
+    });
+    kakao.maps.event.addListener(marker59, 'mouseout', function() {
+        infowindow59.close();
+    });
+
+    kakao.maps.event.addListener(marker59, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7896875,128.6345625', '_blank')
+    });
+
+    var marker60_lat=35.7965826, marker60_lng=128.6258951;
+    var marker60 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker60_lat, marker60_lng),
+        title:"가창면 가창로176길 27 도로(가로)변",
+    });
+    marker60.setMap(map);
+
+    var infowindow60 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로176길 27 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker60, 'mouseover', function() {
+        infowindow60.open(map, marker60);
+    });
+    kakao.maps.event.addListener(marker60, 'mouseout', function() {
+        infowindow60.close();
+    });
+
+    kakao.maps.event.addListener(marker60, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7965826,128.6258951', '_blank')
+    });
+
+    var marker61_lat=35.7963109, marker61_lng=128.6277085;
+    var marker61 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker61_lat, marker61_lng),
+        title:"가창면 가창로 1025 도로(가로)변",
+    });
+    marker61.setMap(map);
+
+    var infowindow61 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로 1025 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker61, 'mouseover', function() {
+        infowindow61.open(map, marker61);
+    });
+    kakao.maps.event.addListener(marker61, 'mouseout', function() {
+        infowindow61.close();
+    });
+
+    kakao.maps.event.addListener(marker61, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7963109,128.6277085', '_blank')
+    });
+
+    var marker62_lat=35.7871594, marker62_lng=128.638724;
+    var marker62 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker62_lat, marker62_lng),
+        title:"가창면 가창로 1008 도로(가로)변",
+    });
+    marker62.setMap(map);
+
+    var infowindow62 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로 1008 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker62, 'mouseover', function() {
+        infowindow62.open(map, marker62);
+    });
+    kakao.maps.event.addListener(marker62, 'mouseout', function() {
+        infowindow62.close();
+    });
+
+    kakao.maps.event.addListener(marker62, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7871594,128.638724', '_blank')
+    });
+
+    var marker63_lat=35.7687811, marker63_lng=128.6481999;
+    var marker63 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker63_lat, marker63_lng),
+        title:"가창면 냉천리 38-4 도로(가로)변",
+    });
+    marker63.setMap(map);
+
+    var infowindow63 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 냉천리 38-4 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker63, 'mouseover', function() {
+        infowindow63.open(map, marker63);
+    });
+    kakao.maps.event.addListener(marker63, 'mouseout', function() {
+        infowindow63.close();
+    });
+
+    kakao.maps.event.addListener(marker63, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7687811,128.6481999', '_blank')
+    });
+
+    var marker64_lat=35.8802459, marker64_lng=128.3994817;
+    var marker64 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker64_lat, marker64_lng),
+        title:"가창면 가창로123길 2 도로(가로)변",
+    });
+    marker64.setMap(map);
+
+    var infowindow64 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">가창면 가창로123길 2 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker64, 'mouseover', function() {
+        infowindow64.open(map, marker64);
+    });
+    kakao.maps.event.addListener(marker64, 'mouseout', function() {
+        infowindow64.close();
+    });
+
+    kakao.maps.event.addListener(marker64, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8802459,128.3994817', '_blank')
+    });
+
+    var marker65_lat=35.882567, marker65_lng=128.4077494;
+    var marker65 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker65_lat, marker65_lng),
+        title:"하빈면 하목정2길 3 도로(가로)변",
+    });
+    marker65.setMap(map);
+
+    var infowindow65 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">하빈면 하목정2길 3 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker65, 'mouseover', function() {
+        infowindow65.open(map, marker65);
+    });
+    kakao.maps.event.addListener(marker65, 'mouseout', function() {
+        infowindow65.close();
+    });
+
+    kakao.maps.event.addListener(marker65, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.882567,128.4077494', '_blank')
+    });
+
+    var marker66_lat=35.8779107, marker66_lng=128.4174824;
+    var marker66 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker66_lat, marker66_lng),
+        title:"하빈면 하산리 672 도로(가로)변",
+    });
+    marker66.setMap(map);
+
+    var infowindow66 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">하빈면 하산리 672 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker66, 'mouseover', function() {
+        infowindow66.open(map, marker66);
+    });
+    kakao.maps.event.addListener(marker66, 'mouseout', function() {
+        infowindow66.close();
+    });
+
+    kakao.maps.event.addListener(marker66, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8779107,128.4174824', '_blank')
+    });
+
+    var marker67_lat=35.8609935, marker67_lng=128.4081028;
+    var marker67 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker67_lat, marker67_lng),
+        title:"하빈면 동곡리 124-1 도로(가로)변",
+    });
+    marker67.setMap(map);
+
+    var infowindow67 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">하빈면 동곡리 124-1 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker67, 'mouseover', function() {
+        infowindow67.open(map, marker67);
+    });
+    kakao.maps.event.addListener(marker67, 'mouseout', function() {
+        infowindow67.close();
+    });
+
+    kakao.maps.event.addListener(marker67, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8609935,128.4081028', '_blank')
+    });
+
+    var marker68_lat=35.9046906, marker68_lng=128.4206175;
+    var marker68 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker68_lat, marker68_lng),
+        title:"하빈면 하빈남로 249 도로(가로)변",
+    });
+    marker68.setMap(map);
+
+    var infowindow68 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">하빈면 하빈남로 249 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker68, 'mouseover', function() {
+        infowindow68.open(map, marker68);
+    });
+    kakao.maps.event.addListener(marker68, 'mouseout', function() {
+        infowindow68.close();
+    });
+
+    kakao.maps.event.addListener(marker68, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.9046906,128.4206175', '_blank')
+    });
+
+    var marker69_lat=35.8865043, marker69_lng=128.4217541;
+    var marker69 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker69_lat, marker69_lng),
+        title:"하빈면 묘리 715 도로(가로)변",
+    });
+    marker69.setMap(map);
+
+    var infowindow69 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">하빈면 묘리 715 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker69, 'mouseover', function() {
+        infowindow69.open(map, marker69);
+    });
+    kakao.maps.event.addListener(marker69, 'mouseout', function() {
+        infowindow69.close();
+    });
+
+    kakao.maps.event.addListener(marker69, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.8865043,128.4217541', '_blank')
+    });
+
+    var marker70_lat=35.7904194, marker70_lng=128.4709446;
+    var marker70 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker70_lat, marker70_lng),
+        title:"하빈면 감문리 813-2 도로(가로)변",
+    });
+    marker70.setMap(map);
+
+    var infowindow70 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">하빈면 감문리 813-2 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker70, 'mouseover', function() {
+        infowindow70.open(map, marker70);
+    });
+    kakao.maps.event.addListener(marker70, 'mouseout', function() {
+        infowindow70.close();
+    });
+
+    kakao.maps.event.addListener(marker70, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7904194,128.4709446', '_blank')
+    });
+
+    var marker71_lat=35.7893104, marker71_lng=128.4638592;
+    var marker71 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker71_lat, marker71_lng),
+        title:"옥포읍 비슬로 2283 도로(가로)변",
+    });
+    marker71.setMap(map);
+
+    var infowindow71 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 비슬로 2283 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker71, 'mouseover', function() {
+        infowindow71.open(map, marker71);
+    });
+    kakao.maps.event.addListener(marker71, 'mouseout', function() {
+        infowindow71.close();
+    });
+
+    kakao.maps.event.addListener(marker71, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7893104,128.4638592', '_blank')
+    });
+
+    var marker72_lat=35.755588, marker72_lng=128.4938942;
+    var marker72 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker72_lat, marker72_lng),
+        title:"옥포읍 비슬로 2215 도로(가로)변",
+    });
+    marker72.setMap(map);
+
+    var infowindow72 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 비슬로 2215 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker72, 'mouseover', function() {
+        infowindow72.open(map, marker72);
+    });
+    kakao.maps.event.addListener(marker72, 'mouseout', function() {
+        infowindow72.close();
+    });
+
+    kakao.maps.event.addListener(marker72, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.755588,128.4938942', '_blank')
+    });
+
+    var marker73_lat=35.7874518, marker73_lng=128.4645718;
+    var marker73 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker73_lat, marker73_lng),
+        title:"옥포읍 반송리 170-1 도로(가로)변",
+    });
+    marker73.setMap(map);
+
+    var infowindow73 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 반송리 170-1 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker73, 'mouseover', function() {
+        infowindow73.open(map, marker73);
+    });
+    kakao.maps.event.addListener(marker73, 'mouseout', function() {
+        infowindow73.close();
+    });
+
+    kakao.maps.event.addListener(marker73, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7874518,128.4645718', '_blank')
+    });
+
+    var marker74_lat=35.7793706, marker74_lng=128.4318737;
+    var marker74 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker74_lat, marker74_lng),
+        title:"옥포읍 비슬로 2220 도로(가로)변",
+    });
+    marker74.setMap(map);
+
+    var infowindow74 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 비슬로 2220 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker74, 'mouseover', function() {
+        infowindow74.open(map, marker74);
+    });
+    kakao.maps.event.addListener(marker74, 'mouseout', function() {
+        infowindow74.close();
+    });
+
+    kakao.maps.event.addListener(marker74, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7793706,128.4318737', '_blank')
+    });
+
+    var marker75_lat=35.7481597, marker75_lng=128.5211241;
+    var marker75 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker75_lat, marker75_lng),
+        title:"옥포읍 비슬로 1900-1 도로(가로)변",
+    });
+    marker75.setMap(map);
+
+    var infowindow75 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 비슬로 1900-1 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker75, 'mouseover', function() {
+        infowindow75.open(map, marker75);
+    });
+    kakao.maps.event.addListener(marker75, 'mouseout', function() {
+        infowindow75.close();
+    });
+
+    kakao.maps.event.addListener(marker75, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7481597,128.5211241', '_blank')
+    });
+
+    var marker76_lat=35.7896321, marker76_lng=128.463792;
+    var marker76 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker76_lat, marker76_lng),
+        title:"옥포읍 용연사길 260 도로(가로)변",
+    });
+    marker76.setMap(map);
+
+    var infowindow76 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 용연사길 260 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker76, 'mouseover', function() {
+        infowindow76.open(map, marker76);
+    });
+    kakao.maps.event.addListener(marker76, 'mouseout', function() {
+        infowindow76.close();
+    });
+
+    kakao.maps.event.addListener(marker76, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7896321,128.463792', '_blank')
+    });
+
+    var marker77_lat=35.7896321, marker77_lng=128.463792;
+    var marker77 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker77_lat, marker77_lng),
+        title:"옥포읍 돌미로5길 15 도로(가로)변",
+    });
+    marker77.setMap(map);
+
+    var infowindow77 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 돌미로5길 15 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker77, 'mouseover', function() {
+        infowindow77.open(map, marker77);
+    });
+    kakao.maps.event.addListener(marker77, 'mouseout', function() {
+        infowindow77.close();
+    });
+
+    kakao.maps.event.addListener(marker77, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.7896321,128.463792', '_blank')
+    });
+
+    var marker78_lat=35.649423, marker78_lng=128.4377217;
+    var marker78 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker78_lat, marker78_lng),
+        title:"옥포읍 돌미로 49 도로(가로)변",
+    });
+    marker78.setMap(map);
+
+    var infowindow78 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">옥포읍 돌미로 49 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker78, 'mouseover', function() {
+        infowindow78.open(map, marker78);
+    });
+    kakao.maps.event.addListener(marker78, 'mouseout', function() {
+        infowindow78.close();
+    });
+
+    kakao.maps.event.addListener(marker78, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.649423,128.4377217', '_blank')
+    });
+
+    var marker79_lat=35.6587707, marker79_lng=128.4135612;
+    var marker79 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker79_lat, marker79_lng),
+        title:"구지면 구지동로10길 3 도로(가로)변",
+    });
+    marker79.setMap(map);
+
+    var infowindow79 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 구지동로10길 3 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker79, 'mouseover', function() {
+        infowindow79.open(map, marker79);
+    });
+    kakao.maps.event.addListener(marker79, 'mouseout', function() {
+        infowindow79.close();
+    });
+
+    kakao.maps.event.addListener(marker79, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6587707,128.4135612', '_blank')
+    });
+
+    var marker80_lat=35.6594436, marker80_lng=128.4134255;
+    var marker80 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker80_lat, marker80_lng),
+        title:"구지면 창리로11길 38 도로(가로)변",
+    });
+    marker80.setMap(map);
+
+    var infowindow80 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 창리로11길 38 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker80, 'mouseover', function() {
+        infowindow80.open(map, marker80);
+    });
+    kakao.maps.event.addListener(marker80, 'mouseout', function() {
+        infowindow80.close();
+    });
+
+    kakao.maps.event.addListener(marker80, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6594436,128.4134255', '_blank')
+    });
+
+    var marker81_lat=35.6297715, marker81_lng=128.4025733;
+    var marker81 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker81_lat, marker81_lng),
+        title:"구지면 창리로11길 51 도로(가로)변",
+    });
+    marker81.setMap(map);
+
+    var infowindow81 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 창리로11길 51 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker81, 'mouseover', function() {
+        infowindow81.open(map, marker81);
+    });
+    kakao.maps.event.addListener(marker81, 'mouseout', function() {
+        infowindow81.close();
+    });
+
+    kakao.maps.event.addListener(marker81, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6297715,128.4025733', '_blank')
+    });
+
+    var marker82_lat=35.6554993, marker82_lng=128.4147205;
+    var marker82 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker82_lat, marker82_lng),
+        title:"구지면 대암리 180 도로(가로)변",
+    });
+    marker82.setMap(map);
+
+    var infowindow82 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 대암리 180 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker82, 'mouseover', function() {
+        infowindow82.open(map, marker82);
+    });
+    kakao.maps.event.addListener(marker82, 'mouseout', function() {
+        infowindow82.close();
+    });
+
+    kakao.maps.event.addListener(marker82, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6554993,128.4147205', '_blank')
+    });
+
+    var marker83_lat=35.6545437, marker83_lng=128.417368;
+    var marker83 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker83_lat, marker83_lng),
+        title:"구지면 과학마을로2길 5-22 도로(가로)변",
+    });
+    marker83.setMap(map);
+
+    var infowindow83 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 과학마을로2길 5-22 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker83, 'mouseover', function() {
+        infowindow83.open(map, marker83);
+    });
+    kakao.maps.event.addListener(marker83, 'mouseout', function() {
+        infowindow83.close();
+    });
+
+    kakao.maps.event.addListener(marker83, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6545437,128.417368', '_blank')
+    });
+
+    var marker84_lat=35.6490215, marker84_lng=128.4189419;
+    var marker84 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker84_lat, marker84_lng),
+        title:"구지면 과학마을로4길 49 도로(가로)변",
+    });
+    marker84.setMap(map);
+
+    var infowindow84 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 과학마을로4길 49 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker84, 'mouseover', function() {
+        infowindow84.open(map, marker84);
+    });
+    kakao.maps.event.addListener(marker84, 'mouseout', function() {
+        infowindow84.close();
+    });
+
+    kakao.maps.event.addListener(marker84, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6490215,128.4189419', '_blank')
+    });
+
+    var marker85_lat=35.6520683, marker85_lng=128.4131816;
+    var marker85 = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(marker85_lat, marker85_lng),
+        title:"구지면 응암리 1232 도로(가로)변",
+    });
+    marker85.setMap(map);
+
+    var infowindow85 = new kakao.maps.InfoWindow({
+        content :'<div class="customoverlay">' +
+        '<span class="title">구지면 응암리 1232 도로(가로)변</span>' +
+        '</div>'
+    });
+    kakao.maps.event.addListener(marker85, 'mouseover', function() {
+        infowindow85.open(map, marker85);
+    });
+    kakao.maps.event.addListener(marker85, 'mouseout', function() {
+        infowindow85.close();
+    });
+
+    kakao.maps.event.addListener(marker85, 'click', function() {
+        window.open('https://map.kakao.com/link/search/35.6520683,128.4131816', '_blank')
+    });
+
+    var lats = [35.8083645, 35.8072079, 35.805185, 35.8049434, 35.8003982, 35.8035534, 35.8013588, 35.8006112, 35.8003982, 35.7958008, 35.8075578, 35.8075059, 35.8081368, 35.8129354, 35.8129354, 35.7977458, 35.8003982, 35.7997494, 35.8023682, 35.8038241, 35.798498, 35.7982766, 35.7966486, 35.798101, 35.7987551, 35.798498, 35.7995858, 35.7994078, 35.7975873, 35.7268052, 35.7274653, 35.7769221, 35.7745414, 35.7285455, 35.7742545, 35.8500337, 35.8638542, 35.8742522, 35.8608316, 35.8616634, 35.8609717, 35.8593354, 35.8627215, 35.8620971, 35.8691581, 35.8616634, 35.8593802, 35.8570033, 35.875809, 35.8593802, 35.868221, 35.8765435, 35.8745546, 35.6774198, 35.6973058, 35.6973058, 35.8042997, 35.8046237, 35.8025854, 35.7896875, 35.7965826, 35.7963109, 35.7871594, 35.7687811, 35.8802459, 35.882567, 35.8779107, 35.8609935, 35.9046906, 35.8865043, 35.7904194, 35.7893104, 35.755588, 35.7874518, 35.7793706, 35.7481597, 35.7896321, 35.7896321, 35.649423, 35.6587707, 35.6594436, 35.6297715, 35.6554993, 35.6545437, 35.6490215, 35.6520683];
+    var lngs = [128.5084394, 128.5080746, 128.5021466, 128.5032316, 128.4934974, 128.4993658, 128.4932192, 128.4935299, 128.4934974, 128.4853487, 128.4891137, 128.4881275, 128.4859184, 128.4810178, 128.4810178, 128.4928982, 128.4934974, 128.4981648, 128.5079641, 128.511514, 128.49454, 128.4946805, 128.4951417, 128.4998716, 128.5016669, 128.49454, 128.490148, 128.4889232, 128.4868808, 128.4476753, 128.4468654, 128.4332331, 128.4313244, 128.4445633, 128.4201906, 128.4642154, 128.438075, 128.4970338, 128.4570707, 128.4582935, 128.4609679, 128.4615419, 128.4594932, 128.4627061, 128.4957009, 128.4582935, 128.4466289, 128.46702, 128.4758575, 128.4466289, 128.4934516, 128.4963682, 128.4814425, 128.4554311, 128.4476215, 128.4476215, 128.6233124, 128.6225315, 128.622956, 128.6345625, 128.6258951, 128.6277085, 128.638724, 128.6481999, 128.3994817, 128.4077494, 128.4174824, 128.4081028, 128.4206175, 128.4217541, 128.4709446, 128.4638592, 128.4938942, 128.4645718, 128.4318737, 128.5211241, 128.463792, 128.463792, 128.4377217, 128.4135612, 128.4134255, 128.4025733, 128.4147205, 128.417368, 128.4189419, 128.4131816];
+    var distanceOverlay;
+    var imageSrc = "https://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Picture.png";
+    var imageSize = new kakao.maps.Size(40, 40);    var imageSrc = "https://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Picture.png";     var imageSize = new kakao.maps.Size(40, 40); 
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    var marker = new kakao.maps.Marker({ 
+        position: map.getCenter(), 
+        title: "내 위치",
+        image : markerImage
+    }); 
+
+    marker.setMap(map);
+    function getTimeHTML(distance) {
+            var walkkTime = distance / 67 | 0;
+            var walkHour = '', walkMin = '';
+
+            if (walkkTime > 60) {
+                walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
+            }
+            walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
+
+            var content = '<ul class="dotOverlay distanceInfo">';
+            content += '    <li>';
+            content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
+            content += '    </li>';
+            content += '    <li>';
+            content += '        <span class="label">도보</span>' + walkHour + walkMin;
+            content += '    </li>';
+            content += '</ul>'
+
+            var walkTime = document.querySelector("#walkTime");
+            walkTime.innerHTML = walkkTime + "분 걸립니다.";
+
+            return content;
+        }
+
+        function showDistance(content, position) {
+            if (distanceOverlay) {
+                distanceOverlay.setPosition(position);
+                distanceOverlay.setContent(content);
+            } else {
+                distanceOverlay = new kakao.maps.CustomOverlay({
+                    map: map,
+                    content: content,
+                    position: position,
+                    xAnchor: 0,
+                    yAnchor: 0,
+                    zIndex: 3
+                });
+            }
+        }
+
+        function deleteDistnce() {
+            if (distanceOverlay) {
+                distanceOverlay.setMap(null);
+                distanceOverlay = null;
+            }
+        }
+
+        let nearLine;
+        function handleClick(mouseEvent) {
+            var latlng = mouseEvent.latLng;
+            run(latlng);
+        }
+        function run(latlng) {
+            marker.setPosition(latlng);
+
+            deleteDistnce();
+
+            var min = 100000000.0;
+            if (nearLine) {
+                nearLine.setMap(null);
+                nearLine.setPath(null);
+                nearLine = null;
+            }
+            var near_num = 0;
+            for (var i = 0; i < 86; i++) {
+                nearLine = new kakao.maps.Polyline({
+                    map: map, // 선을 표시할 지도입니다 
+                    path: [], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
+                    strokeWeight: 3, // 선의 두께입니다 
+                    strokeColor: '#db4040', // 선의 색깔입니다
+                    strokeOpacity: 0, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid' // 선의 스타일입니다
+                });
+
+                var path = nearLine.getPath();
+
+                path.push(latlng);
+                path.push(new kakao.maps.LatLng(lats[i], lngs[i]));
+
+                nearLine.setPath(path);
+                var length = nearLine.getLength();
+                if (min > length) {
+                    near_num = i;
+                    min = length;
+                }
+                if (nearLine) {
+                    nearLine.setMap(null);
+                    nearLine.setPath(null);
+                    nearLine = null;
+                }
+            }
+            if (nearLine) {
+                nearLine.setMap(null);
+                nearLine.setPath(null);
+                nearLine = null;
+            }
+
+            nearLine = new kakao.maps.Polyline({
+                map: map, // 선을 표시할 지도입니다
+                path: [], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
+                strokeWeight: 3, // 선의 두께입니다
+                strokeColor: '#db4040', // 선의 색깔입니다
+                strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+                strokeStyle: 'solid' // 선의 스타일입니다
+            });
+
+            var path = nearLine.getPath();
+
+            path.push(latlng);
+            path.push(new kakao.maps.LatLng(lats[near_num], lngs[near_num]));
+
+            nearLine.setPath(path);
+            min = Math.round(min);
+            content = getTimeHTML(min); // 커스텀오버레이에 추가될 내용입니다
+
+            showDistance(content, path[path.length - 2]);
+
+            var leng = document.querySelector("#length");
+            var link = document.querySelector("#link")
+            leng.innerHTML = min + "미터 떨어져 있고";
+            link.href = "https://map.kakao.com/link/search/" + lats[near_num] + ", " + lngs[near_num];
+            link.target = "_blank"
+
+            console.log(min);
+            map.panTo(latlng);
+        }
+        kakao.maps.event.addListener(map, 'click', handleClick);
+        function getLoc() {
+            alert('왼쪽 상단에서 위치표시 허용을 눌러주세요')
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var lat = position.coords.latitude, // 위도
+                        lon = position.coords.longitude; // 경도
+
+                    var locPosition = new kakao.maps.LatLng(lat, lon);
+
+                    marker.setPosition(locPosition)
+                    run(locPosition)
+                });
+
+            } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+                alert("No GeoLocation")
+            }
+        }    </script>
+    
+</body>
+</html>
